@@ -139,7 +139,7 @@ sns_share:
     facebook: true
     googleplus: true
     weibo: true
-    linkedin: false
+    linkedin: true
     qq: false
     telegram: false
 
@@ -162,10 +162,10 @@ sidebar:
         icon: chrome_reader_mode
         divider: false
     pages:
-        #About:
-            #link: "/about"
-            #icon: person
-            #divider: false
+        About:
+            link: "/about"
+            icon: person
+            divider: false
     article_num:
         use: false
         divider: false
