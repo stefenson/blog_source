@@ -94,11 +94,11 @@ Tag Type表示类型，可取值
 | 0x0101   | Service-Name       | 服务器名称，客户端携带，说明选择特定的服务器 <br> 长度可以为0表示接受所有PPPoE服务器 <br> 一般情况下长度是0 |
 | 0x0102   | AC-Name            | 服务器返回服务器自己的名字 |
 | 0x0103   | Host-Uniq          | Discovery阶段特征值，作用类似于SessionID <br> 每个客户端在一个流程中会保持该值唯一 <br> 服务器答复的时候最好对该值进行判断并维持该值返回 |
-| 0x0104   | AC-Cookie          |                            |
-| 0x0105   | Vendor-Specific    |                            |
-| 0x0110   | Reply-Session-ID   |                            |
-| 0x0201   | Service-Name-Error |                            |
-| 0x0202   | AC-System-Error    |                            |
+| 0x0104   | AC-Cookie          | -                          |
+| 0x0105   | Vendor-Specific    | -                          |
+| 0x0110   | Reply-Session-ID   | -                          |
+| 0x0201   | Service-Name-Error | -                          |
+| 0x0202   | AC-System-Error    | -                          |
 
 以上有备注说明的是比较重要的字段，也是一个PPPoE服务器的基本能力所应具备的字段，其他字段解释请查阅RFC文档。
 AC-Name当然可以自己发挥了，比如我写的就是stefenson-pppoe-server，当然也可以迎合客户端要求，根据客户端 0x0101 所需进行返回，机不机智？
