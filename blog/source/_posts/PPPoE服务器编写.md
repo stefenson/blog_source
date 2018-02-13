@@ -68,7 +68,9 @@ Code：表示PPPoE报文细分类型，目前有如下取值
 | 0x65   | PADS         | PADS                |
 | 0xA7   | PADT         | PADT                |
 
+PADI/PADO/PADR/PADS/PADT是PPPoED阶段使用的Code，Session Data是PPPoE Session阶段使用的Code。
 其中Session ID在PADI/PADO/PADR阶段为0x0000，在PADS中服务器会分配一个Session ID给客户，在PADT中需要携带Session ID告知接收方要断开的Session。
+Session Data阶段，Session ID表示客户端与服务器之间建立的Session编号。
 Payload Length为后面跟的数据总长，不包括PPPoE头和链路头。
 
 ### PPPoED（PPPoE Disovery）
