@@ -73,7 +73,7 @@ PADI/PADO/PADR/PADS/PADT是PPPoED阶段使用的Code，Session Data是PPPoE Sess
 Session Data阶段，Session ID表示客户端与服务器之间建立的Session编号。
 Payload Length为后面跟的数据总长，不包括PPPoE头和链路头。
 
-### PPPoED（PPPoE Disovery）
+### PPPoED（PPPoE Discovery）
 PPPoED阶段主要工作是客户端发现并确定要注册的PPPoE服务器，在相关的PPPoE服务器注册Session。
 它的流程简单描述如下：
 >1.客户端通过PADI通知PPPoE服务器自己的接入请求。
