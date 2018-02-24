@@ -247,7 +247,7 @@ $$
 $$
 根据假设，\\(D\\)为\\(p\\)的倍数，\\(p,q\\)互质，所以\\(r\\)为\\(p\\)的倍数，假设\\(rq=spq=sn\\)，则有
 $$
-D^{de}\equiv sn + D\equiv D\equiv\;(mod\;n)
+D^{de}\equiv sn + D\equiv D\;(mod\;n)
 $$
 得证。
 
