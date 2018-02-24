@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html style="display: none;" <% if(config.language !== null) { %>lang="<%- config.language.substring(0,2) %>"<% } %>>
     <%- partial('_partial/head') %>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
     <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     <style type="text/css">
     .gitment-editor-main
@@ -22,6 +23,10 @@
     canvas
     {
         filter: blur(1px);
+    }
+    .MathJax
+    {
+        outline: 0;
     }
     </style>
     <% if(page.layout === 'gallery') { %>
