@@ -87,20 +87,6 @@
             </div>
             <!-- <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script> -->
             <script type="text/javascript" src="/js/nest.min.js"></script>
-            <script type="text/javascript">
-                function switchbg()
-                {
-                    bgnow = document.getElementById("BackgroundSwitch");
-                    bgnow_title = document.getElementById("BackgroundSwitchTitle");
-                    bg = document.getElementsByTagName("canvas");
-                    bd = document.getElementsByTagName("body");
-
-                    bd[0].removeChild(bg[0]);
-                    bgnow.title = "打开背景";
-                    bgnow.href = "javascript:loadnestbg()";
-                    bgnow_title.innerHTML = "打开背景";
-                }
-            </script>
         </body>
     <% } %>
 </html>
