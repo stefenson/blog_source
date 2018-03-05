@@ -4,8 +4,10 @@
         <!-- Post Header Info -->
         <div class="post_entry-header_info without-thumbnail">
             <!-- Author Avatar & Name -->
-            <img src="<%= theme.img.avatar %>" class="avatar-img" width="44px" height="44px" alt="<%= config.author %>'s avatar">
-            <span class="name-span"><%= config.author %></span>
+            <a href="/about" style="text-decoration: none; color: #333">
+                <img src="<%= theme.img.avatar %>" class="avatar-img" width="44px" height="44px" alt="<%= config.author %>'s avatar">
+                <span class="name-span"><%= config.author %></span>
+            </a>
         </div>
 
         <!-- Null Thumbnail -->
@@ -14,8 +16,10 @@
         <!-- Post Header Info -->
         <div class="post_entry-header_info with-thumbnail">
             <!-- Author Avatar & Name -->
-            <img src="<%= theme.img.avatar %>" class="avatar-img" width="44px" height="44px" alt="<%= config.author %>'s avatar">
-            <span class="name-span"><%= config.author %></span>
+            <a href="/about" style="text-decoration: none; color: #333">
+                <img src="<%= theme.img.avatar %>" class="avatar-img" width="44px" height="44px" alt="<%= config.author %>'s avatar">
+                <span class="name-span"><%= config.author %></span>
+            </a>
         </div>
 
         <!-- Custom thumbnail -->
@@ -23,6 +27,7 @@
             <img src="<%= post.thumbnail %>">
     <% } %>
         </div>
+    
     <!-- Post_entry Content -->
     <div class="post_entry-content mdl-color-text--grey-600 mdl-card__supporting-text" style="padding-top: 24px; padding-bottom: 0px;">
         <div class="post_entry-footer-border" style="height: 1px;"></div>
@@ -59,7 +64,7 @@
             </span>
         </p>
 
-        <p class="post_entry-footer-date" style="width: 100%; margin-bottom: 0px; margin-top: 0px;">
+        <p class="post_entry-footer-date" style="margin-bottom: 0px; margin-top: 0px; float: right;">
             <%= date(post.date, 'MMM DD, YYYY') %>
         </p>
         <div class="post_entry-footer-border" style="margin-top: 48px; height: 1px;"></div>

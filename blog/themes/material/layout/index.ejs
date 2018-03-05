@@ -23,6 +23,25 @@
         <% } %>
     <% } %>
 
+    <div class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade out"  style="background-color: rgba(0, 0, 0, 0.5)">
+        <div class="post_entry-content mdl-color-text--grey-600 mdl-card__supporting-text" style="padding-top: 24px; padding-bottom: 0px;">
+            <!-- <div class="post_entry-footer-border" style="height: 1px;"></div> -->
+            <p class="post_entry-title" style="margin-bottom: 6px; margin-top: 6px; color:white;">
+                Tags:
+            </p>
+            <div class="post_entry-footer-border" style="height: 1px;"></div>
+        </div>
+        <div class="post_entry-footer" style="padding-bottom: 36px;">
+            <% if (site.tags.length) { -%>
+                <%- list_tags(site.tags, {
+                    show_count: true,
+                    class: 'post_entry-tags',
+                    style: 'list',
+                    separator: ''
+                }) %>
+            <% } %>
+        </div>
+    </div>
     <!-- Normal Post -->
     <% page.posts.each(function(post) { %>
         <% if(!((typeof hasposttop === 'function') && post.top)) { %>
