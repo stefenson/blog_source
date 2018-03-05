@@ -76,20 +76,35 @@
                     <%- partial('_partial/import_js') %>
                     <div id="container"></div>
                     <script src="/js/gitment.browser.js"></script>
+
+                    <div id="loadComment" class="post_entry-module mdl-card <% if(theme.card_elevation) { %><%= 'mdl-shadow--' + theme.card_elevation + 'dp' %><% } %> mdl-cell mdl-cell--12-col fade out"  style="background-color: rgba(0, 47, 85, 0.5); min-height: 32px;">
+                        <center style="margin-top: 6px;">
+                            <a href="javascript:loadComment()" title="加载评论" style="color: rgb(129, 248, 228); text-decoration: none;">
+                                <span id="BackgroundSwitchTitle">加载评论</span>
+                            </a>
+                        </center>
+                    </div>
+
                     <script>
-                        var p_id = '<%= page.title %>'
-                        if (p_id == '')
-                            p_id = 'home'
-                        var gitment = new Gitment({
-                            id: p_id,
-                            owner: 'stefenson',
-                            repo: 'blog_comment',
-                            oauth: {
-                                client_id: '11eae2a971d306a1da92',
-                                client_secret: '4ab3eb2e110d470092f71f89ad8126654048f609',
-                            },
-                        })
-                        gitment.render('container')
+                        function loadComment() {
+                            var p_id = '<%= page.title %>'
+                            if (p_id == '')
+                                p_id = 'home'
+                            var gitment = new Gitment({
+                                id: p_id,
+                                owner: 'stefenson',
+                                repo: 'blog_comment',
+                                oauth: {
+                                    client_id: '11eae2a971d306a1da92',
+                                    client_secret: '4ab3eb2e110d470092f71f89ad8126654048f609',
+                                },
+                            })
+                            gitment.render('container')
+
+                            var lc_btn = document.getElementById("loadComment");
+                            var m = document.getElementById("main");
+                            m.removeChild(lc_btn);
+                        }
                     </script>
                 </main>
             </div>
