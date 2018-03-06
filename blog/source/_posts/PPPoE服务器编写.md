@@ -19,7 +19,7 @@ PPPoE（Point-to-Point Protocol Over Ethernet）协议是一个以太网上的�
 
 ### PPPoE工作流程
 [![PPPoE流程](/img/PPPoE_PROC.png)](/img/PPPoE_PROC.png)
-上面的图是一个PPPoE完整的工作流程。
+上面的图是一个PPPoE完整的工作流程（点击可查看大图）。
 双向箭头的地方表示顺序可以互换，任何一方都可以发起，没有严格要求谁先发起。
 
 从图中可以看出，PPPoE流程分为五个阶段。

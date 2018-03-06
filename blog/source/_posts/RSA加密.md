@@ -58,11 +58,14 @@ $$x\equiv a\;(mod\;n)$$
 - 如果\\(a\equiv b\;(mod\;n)\\)，则\\(a + kn\equiv b\;(mod\;n)\\)
 - 如果\\(a\equiv b\;(mod\;n)\\)，\\(b\equiv c\;(mod\;n)\\)，则\\(a\equiv c\;(mod\;n)\\)
 - 如果\\(a\equiv b\;(mod\;n)\\)，则\\(ax\equiv bx\;(mod\;n)\\)
+- ** 如果\\(ax\equiv bx\;(mod\;n)\\)，且\\(x,n\\)互质，则\\(a\equiv b\;(mod\;n)\\) * **
 - 如果\\(a\equiv b\;(mod\;n)\\)，\\(c\equiv d\;(mod\;n)\\)，则\\(a\pm c\equiv b\pm d\;(mod\;n)\\)，\\(ac\equiv bd\;(mod\;n)\\)
 - 如果\\(a\equiv b\;(mod\;n)\\)，\\(n=m_1 m_2 ... m_n\\)，则\\(a\equiv b\;(mod\;m_1)\\)，\\(a\equiv b\;(mod\;m_2)...a\equiv b\;(mod\;m_n)\\)
 
 其实还有很多性质，这里就不再一一列举。
 上面这些性质证明过程都比较简单，这里简单说一下证明思路：\\(a\equiv b\;(mod\;n)\\)换一种表达方式就是\\(a=kn + b\\)，通过这个转换这些性质都能够得到证明。
+关于 * 标记的性质，这里需要解释一下：
+> 如果\\(ax\equiv bx\;(mod\;n)\\)，那么\\(ax = kn + bx\\)，则有\\(a = \frac{kn}{x} + b\\)，如果令结果还在整数范围内，那么\\(kn\\)需要为\\(x\\)的倍数，由于结论要求\\(a\equiv b\;(mod\;n)\\)，则有因子\\(n\\)不能被分解，所以\\(k\\)一定为\\(x\\)的倍数，要保证\\(k\\)为\\(x\\)的倍数，只有\\(x\\)与\\(n\\)互质的时候，所以要求\\(x\\)与\\(n\\)互质。
 
 模运算是RSA证明过程的基石，必须理解。
 
@@ -261,10 +264,10 @@ $$
 (D^e-kn)^d\equiv D\;(mod\;n) \Rightarrow D^{de}\equiv D\;(mod\;n)
 $$
 由于\\(de\equiv 1\;(mod\;\phi(n))\\)，所以\\(de=t\phi(n) + 1\\)。
-因此问题转化为了证明\\(D^{t\phi(n)}\equiv 1\;(mod\;n)\\)成立。
+因此问题转化为了证明\\(D^{t\phi(n) + 1}\equiv D\;(mod\;n)\\)成立。
 分两种情况讨论
 **(1)若\\(D,n\\)互质**
-根据欧拉定理有\\(D^{\phi(n)}\equiv 1\;(mod\;n)\\)，因此\\(D^{t\phi(n)}\equiv 1\;(mod\;n)\\)成立。
+根据欧拉定理有\\(D^{\phi(n)}\equiv 1\;(mod\;n)\\)，因此\\(D^{t\phi(n) + 1}\equiv D\;(mod\;n)\\)成立。
 **(2)若\\(D,n\\)不互质**
 由于\\(n=pq\\)，\\(p,q\\)都是质数。
 所以\\(D\\)一定是\\(p\\)或者\\(q\\)的倍数，并且由于\\(D<n\\)，\\(D\\)不会为\\(p，q\\)的公倍数。
