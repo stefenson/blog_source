@@ -119,7 +119,7 @@ Case 1：N为根，该情况只要把N变为黑色就行，所有分支黑节点
 Case 2：F为黑，这种情况下无需处理，因为黑节点数量没有增加，也没用红-红相邻的情况产生。
 Case 3：F为红，U为红（G肯定是黑的）把F和U涂黑，G涂红，这样在G、F、U、N范围内已经恢复了红黑树的性质，但是重新上色之后，G的父节点可能是红的或者G有可能是根，所以需要把G作为新的要分析的节点重新分析。
 [![RBTree Case3](/img/AVL_RBTree/RBTREE_CASE3.png)](/img/AVL_RBTree/RBTREE_CASE3.png)
-Case 4：F为红，U为黑（G肯定是黑的）且F与N的相对位置一致（都是左/右孩子），这种情况我们把F往G方向上旋转，然后把F涂黑G涂红，操作之后该部分已经恢复性质，并且通过F节点的所有分支的黑节点的数目相比之前G在该位置的时候所有分支的黑色节点数目保持不变，黑节点树木没有增减，整理完成。
+Case 4：F为红，U为黑（G肯定是黑的）且F与N的相对位置一致（都是左/右孩子），这种情况我们把F往G方向上旋转，然后把F涂黑G涂红，操作之后该部分已经恢复性质，并且通过F节点的所有分支的黑节点的数目相比之前G在该位置的时候所有分支的黑色节点数目保持不变，黑节点数目没有增减，整理完成。
 [![RBTree Case4](/img/AVL_RBTree/RBTREE_CASE4.png)](/img/AVL_RBTree/RBTREE_CASE4.png)
 Case 5：F为红，U为黑（G肯定是黑的）且F与N的相对位置相反（一左一右），这种情况我们把N往F方向旋转，旋转之后N和F还是相连的两个红节点，所以这时候要把F作为新的要分析的节点重新分析（其实就是回到了Case 4）。
 [![RBTree Case5](/img/AVL_RBTree/RBTREE_CASE5.png)](/img/AVL_RBTree/RBTREE_CASE5.png)
