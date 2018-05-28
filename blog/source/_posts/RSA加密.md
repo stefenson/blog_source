@@ -275,13 +275,13 @@ $$
 这里令\\(D=hp\\)，容易证明\\(D,q\\)一定互质。
 则有：\\(D^{\phi(q)}\equiv 1\;(mod\;q)\\)。
 所以：
-$$
-(D^{\phi(q)})^{t\phi(p)}\equiv 1\;(mod\;q) \\\
-\Rightarrow D^{t\phi(q)\phi(p)}\equiv 1\;(mod\;q) \\\
-\Rightarrow D^{t\phi(n) + 1}\equiv D\;(mod\;q) \\\
-\Rightarrow D^{de}\equiv D\;(mod\;q) \\\
-\Rightarrow D^{de}=rq + D
-$$
+$$\begin{align}
+&               &(D^{\phi(q)})^{t\phi(p)}           &\equiv 1\;(mod\;q) \\\
+&\Rightarrow    &D^{t\phi(q)\phi(p)}                &\equiv 1\;(mod\;q) \\\
+&\Rightarrow    &D^{t\phi(n) + 1}                   &\equiv D\;(mod\;q) \\\
+&\Rightarrow    &D^{de}                             &\equiv D\;(mod\;q) \\\
+&\Rightarrow    &D^{de}                             &=rq + D
+\end{align}$$
 根据假设，\\(D\\)为\\(p\\)的倍数，\\(p,q\\)互质，所以\\(r\\)为\\(p\\)的倍数，假设\\(rq=spq=sn\\)，则有
 $$
 D^{de}\equiv sn + D\equiv D\;(mod\;n)
