@@ -314,6 +314,6 @@ PPPoE链路建立之后，上文也提到后续的数据依旧是以PPPoE Sessio
 [RFC2484(LCP Option)](https://tools.ietf.org/html/rfc2484)
 [RFC1334(PAP)](https://tools.ietf.org/html/rfc1334)
 [RFC1994(CHAP)](https://tools.ietf.org/html/rfc1994)
-[RFC2865(RADIUS) 也是一种认证方式](https://tools.ietf.org/html/rfc2865)
+[RFC2865(RADIUS)](https://tools.ietf.org/html/rfc2865)
 [RFC1332(IPCP)](https://tools.ietf.org/html/rfc1332)
 [RFC1877(IPCP DNS)](https://tools.ietf.org/html/rfc1877)
