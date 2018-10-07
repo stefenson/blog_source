@@ -8,8 +8,8 @@ tags:
 - 矩阵
 ---
 
-<link rel="stylesheet" href="http://cdn.bootcss.com/highlight.js/9.12.0/styles/vs2015.min.css"/>
-<script src="http://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs2015.min.css"/>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>  
 
 今天讲一讲hash算法。
