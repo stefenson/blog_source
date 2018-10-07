@@ -38,25 +38,19 @@
     #post-content pre
     {
         font-family: "Consolas","Monaco";
-        background-color: rgba(0, 0, 0, 0);
-    }
-    #post-content table tr
-    {
-        background-color: rgba(0, 0, 0, 0);
-    }
-    .gutter
-    {
-        color: rgb(192, 192, 192);
-        background-color: rgba(17, 17, 31, 0.5);
-    }
-    .code
-    {
         color: rgb(255, 240, 192);
+        background-color: rgba(17, 17, 31, 1);
+        /* border-radius: 3px; */
     }
-    figure
+    #post-content table td
     {
-        background-color: rgba(17, 17, 31, 0.5);
-        border-radius: 3px;
+        border: 1px solid rgb(156, 156, 156);
+    }
+    #post-content table th
+    {
+        color: white;
+        background-color: rgba(128, 128, 128, 0.5);
+        border: 1px solid rgb(156, 156, 156);
     }
     </style>
     <% if(page.layout === 'gallery') { %>
