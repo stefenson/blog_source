@@ -1,5 +1,5 @@
 ---
-title: 有限集内MD5/SHA1可逆吗？——MD5、SHA1算法
+title: 有限集内MD5/SHA1可逆吗——MD5、SHA1算法
 date: 2018-10-03 08:36:05
 tags:
 - hash算法
