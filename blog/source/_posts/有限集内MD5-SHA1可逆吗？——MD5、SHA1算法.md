@@ -8,10 +8,6 @@ tags:
 - 矩阵
 ---
 
-<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.12.0/styles/vs2015.min.css"/>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>  
-
 今天讲一讲hash算法。
 
 hash算法不可逆，大家都知道，因为这是一个一对多的问题，一个MD5/SHA1值理论上是可以对应多个原始数据的，所以MD5/SHA1是无法还原出原始信息的。
@@ -23,6 +19,10 @@ hash算法不可逆，大家都知道，因为这是一个一对多的问题，�
 但是MD5/SHA1呢？
 
 这里容我先卖个关子，今天主要是先介绍MD5/SHA1算法，最后我们会讨论这个问题。
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>  
 
 ### 散列算法
 
