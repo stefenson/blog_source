@@ -214,7 +214,7 @@ PAP阶段Code取值有
 从这里不难看出，PAP直接携带用户名密码，并且所支持的最大用户名长和密码长都是255字节。
 使用PAP方式，客户端直接发送PAP-Auth Request，服务器收到报文后解析用户名密码判断该用户是否合法，认证成功返回Auth ACK，否则返回Auth NAK。
 
-当Code为Auth Ack或者Auth NAK的时候，后面Data就是一个字符串，以0x00结尾，返回一个认证信息给客户端，信息内容可以随意填写，没有要求。
+当Code为Auth Ack或者Auth NAK的时候，后面Data先跟一字节长度提示，然后填入长度控制的字符串作为认证提示，认证提示可以随便填写，就是一个字符串。
 
 _ 比如你可以在Auth ACK之后跟上信息：Authentication Failed! Rua!，没错就是可以这么傲娇。 _
 
@@ -237,7 +237,7 @@ Value一般是16字节的数据，各个阶段意义略微有区别。
 客户端收到Challenge之后，通过之前商讨的挑战方式，重新计算Value，并携带用户名，发送Response给服务器。
 服务器通过客户端答复的Value判断认证是否成功，成功返回Success，否则返回Failure。
 
-同样的当Code为Failure或者Success的时候，后面Data是一个返回给客户端的字符串，表示认证信息。
+同样的当Code为Failure或者Success的时候，后面Data是一个返回给客户端的字符串，表示认证信息，以0x00结尾。
 
 MD5挑战模式下，Challenge的期望值为：MD5(id + password + value)。
 其中id为PPPoE Session阶段携带的Identifier，value为服务器Challenge发过来的值。计算完之后重新放入Value返回给服务器。
@@ -282,7 +282,12 @@ IPCP协商完成之后，PPP链接建立过程结束。
 PPPoE链路建立之后，上文也提到后续的数据依旧是以PPPoE Session方式发送，不过P2P Protocol的值变为0x0021（IPv4）
 这时候，一般的网卡是无法解析该消息的，需要把PPP消息中PPPoE部分剔除封装成普通的IPv4报文，再发送给相关设备，这样网卡才能处理该消息。
 这个策略可以考虑使用假MAC的方式，PPPoE服务器通过假MAC发送消息给相关设备，相关设备的信息发送回来之后PPPoE服务器截获该消息（其实WinPcap直接就能收到）然后重新用PPP封装在发送给客户端。
-换句话说，PPPoE链路建立之后，通讯过程依旧跟不同的IPv4通信相差很大。
+换句话说，PPPoE链路建立之后，通讯过程依旧跟普通的IPv4通信相差很大。
+
+### PPPoE报文总览
+一张图总结一下PPPoE报文
+[![PPPoE报文](/img/PPPoEPacket.png)](/img/PPPoEPacket.png)
+
 
 ### 其他一些注意事项和技巧
 - WinPcap监听会监听到Destination非自己的报文，包括自己发的，如果不过滤Source会造成报文没有被过滤，自己的报文自己答复接着进入死循环浪费资源。这点需要注意
