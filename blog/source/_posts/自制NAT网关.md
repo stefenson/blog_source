@@ -49,7 +49,7 @@ NAT(Network Address Translation)是一种局域网设备想要与外部通信时
 DEVICE           ACTION                                              TARGET
 Inside device    Request   192.168.0.2:36210   → 10.91.56.4:80       Router gateway
 Router gateway   Request   10.81.137.54:36212  → 10.91.56.4:80       Next gateway/Server
-                 Recode    192.168.0.2:36210   ↔ 36212               -
+                 Record    192.168.0.2:36210   ↔ 36212               -
 Server response  Response  10.91.56.4:80       → 10.81.137.54:36212  Router gateway
 Router gateway   Search    36212               ↔ 192.168.0.2:36210   -
                  Response  10.91.56.4:80       → 192.168.0.2:36210   Inside device
@@ -192,7 +192,7 @@ checkSum的计算方法与TCP类似，填入伪报文头然后计算，不再说
 [![NAT类型](/img/NAT_IMG/NAT_PROGRAM.png)](/img/NAT_IMG/NAT_PROGRAM.png)
 该实现中的NAT类型是对称型。
 
-为什么只有一个Lan？我没那么多网口啊……
+不要问为什么只有一个Lan？我哪儿来那么多网口啊kora(╯‵□′)╯︵┻━┻
 > *其实也用不到那么多网口，lan只需要一个，然后通过集线器拓展多台设备即可，NAT可以很好的记录他们的对应关系，路由器上面的lan口大多也是这种配置类型。*
 
 实测结果是：看视频，玩游戏，浏览网页完全没有问题，注意结合 [DHCP服务器](2018/02/11/DHCP服务器编写) / [PPPoE服务器](/2018/02/12/PPPoE服务器编写) 一起使用，体验更佳。
@@ -205,7 +205,7 @@ checkSum的计算方法与TCP类似，填入伪报文头然后计算，不再说
 
 在实现整个NAT技术栈过程中，个人感觉对网络链路层和网络层的分时复用有了更深入的理解，整体下来对自己网络知识技术的提升有一定帮助。
 
-不过我没有实现的功能是网络层其他报文的转发，比如ICMP/IGMP报文，感兴趣的可以自己尝试实现以下。
+不过我没有实现的功能是网络层其他报文的转发，比如ICMP/IGMP报文，感兴趣的可以自己尝试实现一下。
 
 ### 结语
 
