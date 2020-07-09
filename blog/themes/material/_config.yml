@@ -166,6 +166,7 @@ sidebar:
             link: "/about"
             icon: person
             divider: false
+    pages_lv2:
         Game & Demo:
             link: "/game"
             icon: person

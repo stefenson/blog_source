@@ -1,7 +1,7 @@
 <header class="header">
     <div class="header-wrapper">
         <!-- Header Copyright -->
-        <div class="header-copyright" style="bottom: -100px">
+        <div class="header-copyright" style="bottom: -150px">
             <div class="header-site">
                 ©&nbsp;
                 <script type="text/javascript">
@@ -75,7 +75,17 @@
             </span>
         </nav>
 
-        <!-- Header SNS -->
-        <%- partial('_partial/isolate-sns_list') %>
+        <!-- Header SNS isolate-sns_list.ejs -->
+
+        <!-- Header Nav Pages Level2 -->
+        <nav class="header-nav header-item">
+            <% for (var i in theme.sidebar.pages_lv2) { %>
+                <span class="header-nav-item">
+                    <a href="<%= theme.sidebar.pages_lv2[i].link || '#' %>" title="<%= i %>">
+                        <span><%= i %></span>
+                    </a>
+                </span>
+            <% } %>
+        </nav>
     </div>
 </header>
