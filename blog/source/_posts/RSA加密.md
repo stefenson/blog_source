@@ -10,7 +10,6 @@ tags:
 - 数论
 ---
 
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 今天主要介绍的是RSA加密。
 
 RSA加密是目前世界上最流行的非对称加密，它名字的来源于它的三位父亲：罗纳德·李维斯特（Ron Rivest）、阿迪·萨莫尔（Adi Shamir）和伦纳德·阿德曼（Leonard Adleman），他们在1977年提出了RSA加密并且在1987年7月首次在美国公布，RSA来源于他们的姓氏开头字母。
@@ -296,3 +295,5 @@ RSA加密过程中，如果要得到私钥\\(d\\)，与私钥\\(d\\)有关的变
 关于大数运算的逻辑，这里不在过多叙述，感兴趣的我这里有一个C#类，除了除法其他的都实现了，想要的可以联系我。
 
 OK，今天就先写到这里，Have a nice day～
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>

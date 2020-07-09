@@ -20,10 +20,6 @@ hash算法不可逆，大家都知道，因为这是一个一对多的问题，�
 
 这里容我先卖个关子，今天主要是先介绍MD5/SHA1算法，最后我们会讨论这个问题。
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>  
-
 ### 散列算法
 
 在了解MD5、SHA1之前，我们先了解一下什么是散列算法。
@@ -424,3 +420,7 @@ SHA1("a") = 0x86F7E437 FAA5A7FC E15D1DDC B9EAEAEA 377667B8
 SHA1("01234567890123456789012345678901234567890123456789012345")
     = 0x0A40B8FB DAAFB7C2 9651618A C15D27E7 72287130
 ```
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs2015.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>  

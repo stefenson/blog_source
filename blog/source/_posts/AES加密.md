@@ -23,8 +23,6 @@ AES加密流程很简单，整体过程可以用下面这张图表示（点击�
 
 <p style="color: blue;"> 在关键算法领域数学依旧占有举足轻重的地位。</p>
 
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 ### 伽罗华域
 
 伽罗华域是包含有限个元素的域，也叫做有限域，最常见的有限域是对素数取模组成的一个集合，然后域中的四则运算与普通集合无异，只是结果要对域定义时的质数取模。
@@ -447,3 +445,4 @@ SBox：
  * 0B, 0D, 09, 0E
  */
 ```
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
