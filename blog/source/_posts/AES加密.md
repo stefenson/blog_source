@@ -19,7 +19,7 @@ AES加密是一种对称加密算法，全称为Advanced Encryption Standard，�
 
 AES加密流程很简单，整体过程可以用下面这张图表示（点击可查看大图）：
 
-[![AES1](/img/AES1.png)](/img/AES1.png)
+![AES1](/img/AES1.png)
 
 其中，中间的9/11/13轮分别是在秘钥长度为128bits、192bits和256bits时使用的轮数。
 

@@ -18,7 +18,7 @@ PPPoE（Point-to-Point Protocol Over Ethernet）协议是一个以太网上的�
 咳咳，扯远了（感觉跟打了个广告一样……）下面说回PPPoE编程。
 
 ### PPPoE工作流程
-[![PPPoE流程](/img/PPPoE_PROC.png)](/img/PPPoE_PROC.png)
+![PPPoE流程](/img/PPPoE_PROC.png)
 上面的图是一个PPPoE完整的工作流程（点击可查看大图）。
 双向箭头的地方表示顺序可以互换，任何一方都可以发起，没有严格要求谁先发起。
 
@@ -286,7 +286,7 @@ PPPoE链路建立之后，上文也提到后续的数据依旧是以PPPoE Sessio
 
 ### PPPoE报文总览
 一张图总结一下PPPoE报文
-[![PPPoE报文](/img/PPPoEPacket.png)](/img/PPPoEPacket.png)
+![PPPoE报文](/img/PPPoEPacket.png)
 
 
 ### 其他一些注意事项和技巧

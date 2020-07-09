@@ -15,7 +15,7 @@ tags:
 举个例子：
 数据插入顺序：1→2→3→4→5→6
 如果对数据不进行刻意安排，那么数据最终呈现形式将是：
-[![Fail Tree](/img/AVL_RBTree/FAIL_TREE.png)](/img/AVL_RBTree/FAIL_TREE.png)
+![Fail Tree](/img/AVL_RBTree/FAIL_TREE.png)
 是的，这是一个瘸了的二叉树，它其实就是一个简单链表，完全没有二叉树应有的样子。
 
 AVL树和红黑树就是为了防止数据插入或删除的时候树的性能下降而产生的一种算法，或者说一种带有限制条件的二叉树结构，它们正式分类的名字叫做“**自平衡二叉树**”，下面我们就来介绍一下它们。
@@ -25,7 +25,7 @@ AVL树和红黑树就是为了防止数据插入或删除的时候树的性能�
 讲AVL跟红黑树之前，我们先来复习一下大学时被我们遗忘的知识：**树的旋转**。
 
 一图胜千言：
-[![Tree Rote](/img/AVL_RBTree/TREE_ROTE.png)](/img/AVL_RBTree/TREE_ROTE.png)
+![Tree Rote](/img/AVL_RBTree/TREE_ROTE.png)
 其实这里只是写的形象一点而已，为什么把孩子拉高之后多出来的那个节点要接在以前的父节点上呢？
 
 这里我们要理解一下树旋转本来的设计理念，树旋转最终保证的是节点的相互位置不变，比如上图中第一棵树刚开始如果使用中序遍历，得到的是：BADCE，再经过旋转之后最终的结果中序遍历结果还是BADCE，而中序遍历又是二叉排序树的排序结果遍历方法，所以这么做可以保证树的中序遍历结果不变，也就保证了二叉排序树的性质不变。
@@ -39,14 +39,14 @@ AVL树和红黑树就是为了防止数据插入或删除的时候树的性能�
 
 举个例子：
 在下面树中插入一个新的节点4。
-[![Insert Example](/img/AVL_RBTree/INSERT_EXM.png)](/img/AVL_RBTree/INSERT_EXM.png)
+![Insert Example](/img/AVL_RBTree/INSERT_EXM.png)
 我们并不会在3和5之间插入节点4，具体插入过程是：
 1. 从根5开始寻找，4比5小所以去左子树。
 2. 新子树的根为3，4比3大所以去右子树。
 3. 新子树根是空的，找到了要插入的位置，插入4。
 
 最终插入后的效果是：
-[![Insert Example](/img/AVL_RBTree/INSERT_EXM_RESULT.png)](/img/AVL_RBTree/INSERT_EXM_RESULT.png)
+![Insert Example](/img/AVL_RBTree/INSERT_EXM_RESULT.png)
 
 删除操作跟插入一样，如果半山腰删除一个元素，第一是情况复杂不好处理，修改很多指针指向性能较差，所以删除我们也需要特殊处理，将结果往底层没有子孙的节点挪。
 
@@ -54,7 +54,7 @@ AVL树和红黑树就是为了防止数据插入或删除的时候树的性能�
 
 举个例子：
 在下面树中删除节点5。
-[![Delete Example](/img/AVL_RBTree/DELETE_EXM.png)](/img/AVL_RBTree/DELETE_EXM.png)
+![Delete Example](/img/AVL_RBTree/DELETE_EXM.png)
 我们用右子树的最左节点替换，过程是：
 1. 去到5的右子树。
 2. 从子树根向左遍历至最深，找到节点6，交换5和6。
@@ -62,7 +62,7 @@ AVL树和红黑树就是为了防止数据插入或删除的时候树的性能�
 4. 该节点没有孩子，删除节点5。
 
 过程图：
-[![Delete Example](/img/AVL_RBTree/DELETE_EXM_RESULT.png)](/img/AVL_RBTree/DELETE_EXM_RESULT.png)
+![Delete Example](/img/AVL_RBTree/DELETE_EXM_RESULT.png)
 
 下面的AVL树和红黑树的插入删除也是采用这种方法处理，这样处理优势就是易于对插入和删除的情况做处理，因为都是对叶子节点的操作。
 
@@ -76,7 +76,7 @@ AVL树是一种自平衡二叉树，它的平衡原则其实很简单，左右�
 所以说AVL树在存储的时候，除了基本树节点存储所需要携带的数据和左右子树的节点外，另外需要存储的是左右子树的高度（或者他们的高度差，但是高度差的维护并不比高度的维护简单），一旦发现左右子树高度差超过1就需要进行平衡调整。
 
 所以AVL树的平衡调整分为如下几种情况：
-[![AVL Remake](/img/AVL_RBTree/AVL_REMAKE.png)](/img/AVL_RBTree/AVL_REMAKE.png)
+![AVL Remake](/img/AVL_RBTree/AVL_REMAKE.png)
 简单来说，孩子和孙子方向一致（都是左或者都是右），那么就简单一次旋转就能整理好，如果方向不一致（一左一右），先在孩子节点上把孙子节点转到同一方向上，然后再在父节点上按照刚刚方向一致的情况处理。
 
 注意这么做之后，这棵子树的高度会发生变化，所以要在子树根（也就是刚刚的父节点）上回溯调用，在子树的父节点上重新分析，看刚刚的调整有没有在其他位置打破平衡原则，或者更新子树的父节点相关的数据。
@@ -84,7 +84,7 @@ AVL树是一种自平衡二叉树，它的平衡原则其实很简单，左右�
 那么一次插入/删除一共要平衡多少次呢？
 
 这里大部分教材里面写的AVL树性能瓶颈就是每次平衡几乎都要回溯到根结点，我也基本同意这种看法。但是AVL树其实并不是每次都要回溯到根的，比如下面这个过程，注意看左右子树高度值变化：
-[![AVL Demo](/img/AVL_RBTree/AVL_DEMO1.png)](/img/AVL_RBTree/AVL_DEMO1.png)
+![AVL Demo](/img/AVL_RBTree/AVL_DEMO1.png)
 
 可以发现这时候，H节点的插入，除了C、D、H三个节点存在子树高度或者位置的变化，其他的节点并没有发生任何变化。所以AVL树的数据插入或删除的时间是根据树当前形态来的，不是很稳定。
 
@@ -101,7 +101,7 @@ AVL树是一种自平衡二叉树，它的平衡原则其实很简单，左右�
 4. 从任意节点到其叶子节点的路径中，每个路径的黑节点数目相等。
 
 红黑树其实是2-3-4树的二叉树表现，可以理解为红黑树与2-3-4树是等价的，他们的等价关系如下图所示：
-[![RBTree 2-3-4Tree](/img/AVL_RBTree/2-3-4_RBTREE.png)](/img/AVL_RBTree/2-3-4_RBTREE.png)
+![RBTree 2-3-4Tree](/img/AVL_RBTree/2-3-4_RBTREE.png)
 
 根据红黑树的性质，插入或删除节点之后都需要对树进行性质复原操作（树的旋转）。
 与AVL树不同，红黑树的性质复原分为插入和删除两个大类，我们先来说插入操作。
@@ -118,11 +118,11 @@ AVL树是一种自平衡二叉树，它的平衡原则其实很简单，左右�
 Case 1：N为根，该情况只要把N变为黑色就行，所有分支黑节点数量都增加1，无任何副作用。
 Case 2：F为黑，这种情况下无需处理，因为黑节点数量没有增加，也没用红-红相邻的情况产生。
 Case 3：F为红，U为红（G肯定是黑的）把F和U涂黑，G涂红，这样在G、F、U、N范围内已经恢复了红黑树的性质，但是重新上色之后，G的父节点可能是红的或者G有可能是根，所以需要把G作为新的要分析的节点重新分析。
-[![RBTree Case3](/img/AVL_RBTree/RBTREE_CASE3.png)](/img/AVL_RBTree/RBTREE_CASE3.png)
+![RBTree Case3](/img/AVL_RBTree/RBTREE_CASE3.png)
 Case 4：F为红，U为黑（G肯定是黑的）且F与N的相对位置一致（都是左/右孩子），这种情况我们把F往G方向上旋转，然后把F涂黑G涂红，操作之后该部分已经恢复性质，并且通过F节点的所有分支的黑节点的数目相比之前G在该位置的时候所有分支的黑色节点数目保持不变，黑节点数目没有增减，整理完成。
-[![RBTree Case4](/img/AVL_RBTree/RBTREE_CASE4.png)](/img/AVL_RBTree/RBTREE_CASE4.png)
+![RBTree Case4](/img/AVL_RBTree/RBTREE_CASE4.png)
 Case 5：F为红，U为黑（G肯定是黑的）且F与N的相对位置相反（一左一右），这种情况我们把N往F方向旋转，旋转之后N和F还是相连的两个红节点，所以这时候要把F作为新的要分析的节点重新分析（其实就是回到了Case 4）。
-[![RBTree Case5](/img/AVL_RBTree/RBTREE_CASE5.png)](/img/AVL_RBTree/RBTREE_CASE5.png)
+![RBTree Case5](/img/AVL_RBTree/RBTREE_CASE5.png)
 以上就是所有插入的情况。
 插入过程的调整主要思想就是把红节点往根移动，通过局部调整让红节点不断接近根节点，局部调整完之后查看对局外的影响，并在影响的位置继续调整。
 插入操作的情况分类也比较简单：
@@ -147,17 +147,17 @@ Case 5：F为红，U为黑（G肯定是黑的）且F与N的相对位置相反（
 Case 1：要删除的节点（N）为红色，直接删除，黑节点数目没有改变，删除中也不会出现红-红相连的情况。
 Case 2：要删除的节点为根，直接删，复位整棵树为空。
 Case 3：N是黑的，S是红的，把S往P方向旋转，然后把P染红，S染黑，这样之后，过S不过P的路径黑节点数目没有变化，但是从P来看，N所在的区域还是没有回归性质，过N的路径黑节点数目依旧比其他路径少1，所以要继续以N分析。
-[![RBTree Delete Case3](/img/AVL_RBTree/RBTREE_DEL_CASE3.png)](/img/AVL_RBTree/RBTREE_DEL_CASE3.png)
+![RBTree Delete Case3](/img/AVL_RBTree/RBTREE_DEL_CASE3.png)
 Case 4：N为黑，S为黑，与S相对位置一样（都为左或右孩子）的孩子颜色为红，这时候把S往P方向上旋转，并且把S的颜色改为P的颜色，然后把P涂黑，把与S相对位置相同的节点涂黑，此时新的右侧子树中P、N都是黑的，但是N不计数，所以与以前只有N在的时候黑节点数目相比没有变化，S另一侧黑节点被S的儿子代替，黑节点数目也没有变化，所以调整完成。
-[![RBTree Delete Case4](/img/AVL_RBTree/RBTREE_DEL_CASE4.png)](/img/AVL_RBTree/RBTREE_DEL_CASE4.png)
+![RBTree Delete Case4](/img/AVL_RBTree/RBTREE_DEL_CASE4.png)
 Case 5：N为黑，S为黑，与S相对位置相反的孩子为红，这时候把与S相对位置相反的红色孩子往S方向旋转，并且把它染黑，S染红，这么做保证了S这边黑节点数目没有变化，但是树整体状态依旧存在问题，所以需要继续分析N（其实回到了情况4）。
-[![RBTree Delete Case5](/img/AVL_RBTree/RBTREE_DEL_CASE5.png)](/img/AVL_RBTree/RBTREE_DEL_CASE5.png)
+![RBTree Delete Case5](/img/AVL_RBTree/RBTREE_DEL_CASE5.png)
 <span style="color: blue;">*PS：如果4、5情况同时出现（两个孩子都是红的），优先以情况4处理，因为按照情况5处理会出现两个红节点相连的情况，这并不是我们想要的。*</span>
 
 Case 6：N为黑，S为黑，S的孩子都是黑的，P是红的，这时候只要把S改红，P改黑红黑树的性质就恢复了，原理就是过P的黑色节点数目都加了1，以前的N节点路径上的黑色节点计数挪到了P，而S那边路径上也刚好少了一个黑色节点，所以过P的黑色节点数目与原来保持一致，整理完成。
-[![RBTree Delete Case6](/img/AVL_RBTree/RBTREE_DEL_CASE6.png)](/img/AVL_RBTree/RBTREE_DEL_CASE6.png)
+![RBTree Delete Case6](/img/AVL_RBTree/RBTREE_DEL_CASE6.png)
 Case 7：N为黑，S为黑，S的孩子都是黑，P是黑的，这时候把S改为红，这么做之后在P范围内来看已经平衡了，S侧和N侧都少了一个黑节点，但是过P的所有路径黑节点数目也全部减少了1，所以应该把P当作新的要分析的节点重新分析，除非P是根。
-[![RBTree Delete Case7](/img/AVL_RBTree/RBTREE_DEL_CASE7.png)](/img/AVL_RBTree/RBTREE_DEL_CASE7.png)
+![RBTree Delete Case7](/img/AVL_RBTree/RBTREE_DEL_CASE7.png)
 以上就是所有删除的情况，注意保存要删除的节点，所有调整完成之后删除要删除的节点。
 删除过程很复杂，当时刚接触这个东西的时候也是无从下手，不过后来捋清之后情况逐渐明朗了，它们按照情况1～7可以这么划分：
 1. N是不是红的分为1/2、3、4、5、6、7
@@ -174,16 +174,16 @@ Case 7：N为黑，S为黑，S的孩子都是黑，P是黑的，这时候把S改
 ### 二者对比
 
 这里我自写了一个程序，程序大致如下：
-[![AVLTree](/img/AVL_RBTree/AVLTREE.png)](/img/AVL_RBTree/AVLTREE.png)
+![AVLTree](/img/AVL_RBTree/AVLTREE.png)
 
-[![RBTree](/img/AVL_RBTree/RBTREE.png)](/img/AVL_RBTree/RBTREE.png)
+![RBTree](/img/AVL_RBTree/RBTREE.png)
 不过我当时测试的时候只是测试了二者插入的速度，有兴趣的可以联系我要一下代码进行更多测试，这里简单放一个二者插入相同数量数据（100w个）的总时间对比截图：
 AVL树耗时：
-[![AVL Total Time](/img/AVL_RBTree/AVL_TOTAL_TIME.png)](/img/AVL_RBTree/AVL_TOTAL_TIME.png)
+![AVL Total Time](/img/AVL_RBTree/AVL_TOTAL_TIME.png)
 红黑树耗时：
-[![RB Total Time](/img/AVL_RBTree/RB_TOTAL_TIME.png)](/img/AVL_RBTree/RB_TOTAL_TIME.png)
+![RB Total Time](/img/AVL_RBTree/RB_TOTAL_TIME.png)
 我个人的理解：AVL树结构要优于红黑树，因为它左右子树相差永远不超过1，但是付出的代价就是每次调整的效率。而红黑树克服了AVL树整理时间过长的问题，但是红黑树的结构有时候也可能会比AVL树差很多，极端情况下有可能会出现树差超过10。简单举个例子：
-[![Bad RBTree](/img/AVL_RBTree/BAD_RBTREE.png)](/img/AVL_RBTree/BAD_RBTREE.png)
+![Bad RBTree](/img/AVL_RBTree/BAD_RBTREE.png)
 可以想象，如果一侧全为黑，另一侧黑红相间，如果数据到达一定量之后，左右高度差将会非常的大，其他文章所谓红黑树相差不超过2、3层的说法是完全靠不住的。
 这样其实也给我们在设计红黑树的时候提了个醒，在设计红黑树的删除时，不能一直盯着一个方向删除，这样很容易造成一侧子树红节点数量迅速下降，进一步导致两侧高度差拉大。
 

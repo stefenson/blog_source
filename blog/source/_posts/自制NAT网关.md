@@ -10,7 +10,7 @@ tags:
 
 这里提一个大家都很熟悉的名字：网关。
 
-[![网关](/img/NAT_IMG/GATEWAY.png)](/img/NAT_IMG/GATEWAY.png)
+![网关](/img/NAT_IMG/GATEWAY.png)
 
 网关的在Wiki定义是：转发其他服务器通信数据的服务器，接受客户端发送来的请求时，它就像自己拥有资源的服务器一样对请求进行处理。
 
@@ -23,12 +23,12 @@ tags:
 路由其实更多的功能是选径功能，让报文能更快更准确的到达要通信的目标，路由功能其实不只是路由器具有，每台终端基本都有这个功能。
 
 说回网关，我们先类比一下PPPoE服务器，PPPoE服务器通信的时候，模型可以简化成这样：
-[![PPPoE服务器功能](/img/NAT_IMG/PPPOE_SERVER.png)](/img/NAT_IMG/PPPOE_SERVER.png)
+![PPPoE服务器功能](/img/NAT_IMG/PPPOE_SERVER.png)
 
 不难看出，PPPoE服务器本身也是一台网关设备。
 
 路由器中网关与此类似，但是没有PPPoE这么复杂，报文内容从IPv4→IPv4，不涉及协议转换的内容，大概是这么个场景：
-[![Router](/img/NAT_IMG/ROUTER.png)](/img/NAT_IMG/ROUTER.png)
+![Router](/img/NAT_IMG/ROUTER.png)
 
 
 从内网转发到外网，协议不需要做转换，只是将通信设备信息做变换，完成内外网信息交换，这个技术就是我们今天的主角：NAT。
@@ -42,7 +42,7 @@ NAT(Network Address Translation)是一种局域网设备想要与外部通信时
 目前我们所接触到的NAT更多的是网络地址端口转换（NAPT），也是路由器网关采用的技术。这种方法的策略采用的是端口映射技术，多台内网设备公用一个外网IP，网关分配给每个设备/服务不同的端口，维护一份外网端口到内网IP终结点的映射。
 
 举个例子：
-[![路由器网络](/img/NAT_IMG/ROUTER_TRACE.png)](/img/NAT_IMG/ROUTER_TRACE.png)
+![路由器网络](/img/NAT_IMG/ROUTER_TRACE.png)
 
 在上面的网络中，如果内网设备发起了一个请求，它的流程是这样的：
 ```js
@@ -72,7 +72,7 @@ OSI模型中，除了链路层，网络层和传输层都有校验和，协议�
 #### 网络层校验和（IPv4头部）
 
 先了解IPv4报文头结构（括号内单位**bit**）：
-[![IPv4报文头](/img/NAT_IMG/IPHeader.png)](/img/NAT_IMG/IPHeader.png)
+![IPv4报文头](/img/NAT_IMG/IPHeader.png)
 
 各部分介绍：
 **version**: IPv4，所以是4。
@@ -102,7 +102,7 @@ OSI模型中，除了链路层，网络层和传输层都有校验和，协议�
 #### TCP校验和
 
 TCP报文组成结构（括号内单位**bit**）：
-[![TCP报文](/img/NAT_IMG/TCPHeader.png)](/img/NAT_IMG/TCPHeader.png)
+![TCP报文](/img/NAT_IMG/TCPHeader.png)
 
 各部分介绍：
 **srcPort**: 来源端口号。
@@ -120,7 +120,7 @@ TCP报文组成结构（括号内单位**bit**）：
 一般来说，这部分我们可能修改的有srcPort、dstPort。Hlen看情况，一般是不变的。
 修改之后，checkSum计算方法是：
 >1. 在TCP头部补充伪报文头，最终数据结构如下：
->[![伪报文头](/img/NAT_IMG/TCP_ADDON.png)](/img/NAT_IMG/TCP_ADDON.png)
+>![伪报文头](/img/NAT_IMG/TCP_ADDON.png)
 >其中protocol与IP报文头数值一样，前方补充0x00拓展成16位，length为TCP数据总长，包括TCP头部。
 >2. 把0x0000填写到TCP报文的checkSum字段。
 >3. 将加上伪报文头的数据按照IPv4报文头的checkSum计算方法进行计算，过程不赘述。
@@ -130,7 +130,7 @@ TCP报文组成结构（括号内单位**bit**）：
 #### UDP校验和
 
 UDP报文组成结构：
-[![UDP报文](/img/NAT_IMG/UDPPacket.png)](/img/NAT_IMG/UDPPacket.png)
+![UDP报文](/img/NAT_IMG/UDPPacket.png)
 
 各部分内容在TCP那边大部分都有介绍，length表示的是UDP数据总长，包括UDP头部。
 
@@ -158,7 +158,7 @@ checkSum的计算方法与TCP类似，填入伪报文头然后计算，不再说
 ### NAT类型
 
 当前网络中的NAT有如下四种类型，选择实现任何一种类型都可以完成NAT的工作：
-[![NAT类型](/img/NAT_IMG/NAT_TYPE.png)](/img/NAT_IMG/NAT_TYPE.png)
+![NAT类型](/img/NAT_IMG/NAT_TYPE.png)
 
 **完全锥形**：内网设备一接入之后，发起任意一个外部请求，NAT便打通内部IPEP到外部端口的映射，任意外部设备都可以通过该端口与内网设备通信。
 **受限锥形**：内网设备接入之后，发起一个对外部设备访问的请求，随后NAT开启一条转换路径，被指明访问的设备可以通过这个端口与内网设备通信（发起端口，类型都无限制，可以复用），其他的外部设备无法通过这个端口通信。
@@ -189,7 +189,7 @@ checkSum的计算方法与TCP类似，填入伪报文头然后计算，不再说
 *这里也算是当时踩过的坑之一，所以这里提示一下后来者。*
 
 ### 成果展示
-[![NAT类型](/img/NAT_IMG/NAT_PROGRAM.png)](/img/NAT_IMG/NAT_PROGRAM.png)
+![NAT类型](/img/NAT_IMG/NAT_PROGRAM.png)
 该实现中的NAT类型是全锥形。
 
 不要问为什么只有一个Lan？我哪儿来那么多网口啊kora(╯‵□′)╯︵┻━┻
