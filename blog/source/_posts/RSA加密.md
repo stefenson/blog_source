@@ -10,11 +10,6 @@ tags:
 - 数论
 ---
 
->大家新年好呀！新的一年祝大家事业顺利，合家欢乐！
->新年刚过去，不知道大家都收了多少红包呀？
->反正我是没有了，555555
->算了，不说这些有的没的了，年后的打算中，我计划把以前我记在本子上的东西全部搬运到博客中来，工作量会有点大，本人也不是那么勤奋，但是我会尽量写下去的。
-
 <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 今天主要介绍的是RSA加密。
 
