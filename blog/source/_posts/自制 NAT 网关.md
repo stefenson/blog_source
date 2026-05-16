@@ -46,13 +46,13 @@ NAT(Network Address Translation)是一种局域网设备想要与外部通信时
 
 在上面的网络中，如果内网设备发起了一个请求，它的流程是这样的：
 ```js
-DEVICE           ACTION                                              TARGET
-Inside device    Request   192.168.0.2:36210   → 10.91.56.4:80       Router gateway
-Router gateway   Request   10.81.137.54:36212  → 10.91.56.4:80       Next gateway/Server
-                 Record    192.168.0.2:36210   ↔ 36212               -
-Server response  Response  10.91.56.4:80       → 10.81.137.54:36212  Router gateway
-Router gateway   Search    36212               ↔ 192.168.0.2:36210   -
-                 Response  10.91.56.4:80       → 192.168.0.2:36210   Inside device
+DEVICE				ACTION                                              TARGET
+Inside device       Request   192.168.0.2:36210   → 10.91.56.4:80       Router gateway
+Router gateway      Request   10.81.137.54:36212  → 10.91.56.4:80       Next gateway/Server
+                    Record    192.168.0.2:36210   ↔ 36212               -
+Next gateway/Server Response  10.91.56.4:80       → 10.81.137.54:36212  Router gateway
+Router gateway      Search    36212               ↔ 192.168.0.2:36210   -
+                    Response  10.91.56.4:80       → 192.168.0.2:36210   Inside device
 ```
 
 从例子中我们可以看出，网关对于发往外部的请求，修改请求来源为自己，对于转发到内部的请求，修改请求的目标到客户端，其他内容不做修改。
