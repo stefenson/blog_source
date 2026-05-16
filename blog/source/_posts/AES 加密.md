@@ -159,9 +159,9 @@ $$
 
 到这里，准备知识就差不多了，接下来我们来看 AES 加密到底是个什么玩意吧：
 
-### AES加密中的各项操作
+### AES 加密中的各项操作
 
-**<p style="color: red;"> 首先说明，AES加密流程中发生的运算全部都在\\(GF(2^8)\\)下，后面的运算不再特殊说明！</p>**
+**<p style="color: red;"> 首先说明，AES 加密流程中发生的运算全部都在 \\(GF(2^8)\\) 下，后面的运算不再特殊说明！</p>**
 
 #### 行转换
 从简单的说起，行转换比较容易，他的操作图示如下：
@@ -447,4 +447,13 @@ SBox：
  * 0B, 0D, 09, 0E
  */
 ```
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
+<script>
+  window.MathJax = {
+    output: {
+      // 规定 MathJax 使用官方打包的 Times (Termes) 衬线字体
+      font: 'mathjax-termes'
+    }
+  };
+</script>
+<!-- 引入 MathJax 4.x 核心组件 -->
+<script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml-nofont.js" defer></script>

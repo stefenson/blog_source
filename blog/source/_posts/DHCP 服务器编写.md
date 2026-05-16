@@ -83,7 +83,7 @@ DHCP 报文衍生自 bootp 报文，是一个 UDP 协议的网络层报文，该
 >Magic Cookie：DHCP 固定为 {0x63, 0x82, 0x53, 0x63}，16 进制。
 
 一般情况下 File，Sname 都是空的，很少用到。
-有关 Magic Cookie，bootp 文档解释为让服务器确定在这个报文中它看到的信息类型，有点像特殊标示。
+有关 Magic Cookie，因为 DHCP 魔改自 bootp，所以为了让设备快速确认这是一个 DHCP 报文设置了这个特殊值，方便识别。
 
 最后的 Option 报文的组织形式为：
 
