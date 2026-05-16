@@ -26,7 +26,7 @@ PPPoE（Point-to-Point Protocol Over Ethernet）协议是一个以太网上的�
 其实不细分，PPPoE 只有两个阶段，一个是 PPPoED 阶段，后面的 LCP/Auth/IPCP/PPP 全部都可以纳入 PPP Session 阶段。
 
 PPPoE 服务器在后续数据交互的过程还要参与，它不仅仅是提供 IP 配置给客户端，后续通讯中全部建立在 PPP Session 之上，服务器需要处理这些 Session 包，一是与客户端通讯确认是否在线管理 Session，二是对数据进行重新封包，去掉 PPP 报文头，转换为一般的报文与外部目标设备通讯，并且把通讯结果使用 PPP 封包发送给客户端。所以说 PPPoE 服务器对服务器性能要求非常高。
-从上面的描述中也可以看出 PPP Session 是一个很重要的概念，PPPoE 通讯中，链接保持、数据传输、链路通讯、链路状态汇报和修改全部都是在PPP Session 通讯上进行的，Session 是一个 PPPoE 通讯中的关键通道。
+从上面的描述中也可以看出 PPP Session 是一个很重要的概念，PPPoE 通讯中，链接保持、数据传输、链路通讯、链路状态汇报和修改全部都是在 PPP Session 通讯上进行的，Session 是一个 PPPoE 通讯中的关键通道。
 
 下面就每一个阶段讲解其流程和报文结构。
 
@@ -38,8 +38,8 @@ PPPoE 服务器在后续数据交互的过程还要参与，它不仅仅是提�
 | 6 Bytes     | 6 Bytes | 2 Bytes |
 
 由于我们做的是链路层编程，报文里面每一个字节都需要我们填进去，所以开头这一部分我们也需要了解。
-Destination：目标的 Mac 地址，PADI 阶段客户端会使用 FF:FF:FF:FF:FF:FF 广播地址。
-Source：来源 MAC，该值在组织报文时理论上可以随意设置，可以不与当前发送设备的 Mac 一致，链路层编程时 Source 不会被自动填入当前设备的 Mac 地址，所以这里可以随便写（是的，你写成其他设备 Mac 也可以）。
+Destination：目标的 MAC 地址，PADI 阶段客户端会使用 FF:FF:FF:FF:FF:FF 广播地址。
+Source：来源 MAC，该值在组织报文时理论上可以随意设置，可以不与当前发送设备的 MAC 一致，链路层编程时 Source 不会被自动填入当前设备的 MAC 地址，所以这里可以随便写（是的，你写成其他设备 MAC 也可以）。
 Type：报文类型，目前我所知道的取值有这些
 >0x8863.................PPPoE Discovery
 >0x8864.................PPPoE Session
